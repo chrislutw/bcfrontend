@@ -1,0 +1,12 @@
+/* theme color */
+// a list of all their theme variables here
+// https://github.com/ElemeFE/element/blob/dev/packages/theme-chalk/src/common/var.scss
+
+// example above
+// $--input-placeholder-color: #c5ccd4;
+// $--input-background-color: #24292f;
+
+/* icon font path, required */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import '~element-ui/packages/theme-chalk/src/index';

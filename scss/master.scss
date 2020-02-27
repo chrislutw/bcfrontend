@@ -1,0 +1,663 @@
+@charset "UTF-8";
+
+// UI樣式_顏色 style_color
+
+// 暗黑色
+.style_color_dark {
+  background-color: #000;
+
+  // --- 表單Form顏色設定 -----------------------------------
+  $form-list: (
+    muted: #ffffff,
+    //次要的Form顏色。V
+      primary: #24292f,
+    //主要的Form顏色。V
+  );
+  @each $setcolor, $color in $form-list {
+    .UI-form-#{$setcolor} {
+      border: 1px solid darken($color, 10%);
+      background-color: $color;
+      outline: none;
+      padding: 12px 10px;
+      line-height: 1.5em;
+    }
+  }
+
+  // --- 文字顏色設定 -----------------------------------
+  $f-list: (
+    muted: #c5ccd4,
+    //次要的文字。V
+      primary: #6e7c8a,
+    //主要的文字。V
+      success: #00c020,
+    //執行成功的文字。
+      info: #17a2b8,
+    //提示信息的文字。
+      warning: #ffa600,
+    //警告文字。
+      danger: #ff0000,
+    //危险操作文字。
+      dark: #424242,
+    //深色文字。V
+      light: #c5ccd4,
+    //浅色文字。
+      white: #fff,
+    //白色文字。
+      deposit: #0b8700,
+    //deposit專用顏色。
+      withdraw: #0084db,
+    //withdraw專用顏色。
+  );
+  @each $setcolor, $color in $f-list {
+    .UI-f-#{$setcolor} {
+      color: $color;
+    }
+  }
+
+  // --- icon顏色設定 -----------------------------------
+  $icon-list: (
+    muted: #d8d9d9,
+    //柔和的icon顏色。V
+      primary: #5b6773,
+    //重要的icon顏色。
+      success: #3dd158,
+    //執行成功的icon顏色。V
+      info: #fdfdfd,
+    //提示信息的icon顏色。
+      warning: #ffa600,
+    //警告icon顏色。V
+      danger: #ff0000,
+    //危险操作icon顏色。
+      dark: #191b20,
+    //深色icon顏色。
+      light: #9da8b5,
+    //浅色icon顏色。
+      white: #fff,
+    //白色icon顏色。
+      deposit: #0b8700,
+    //deposit專用顏色。V
+      withdraw: #0084db,
+    //withdraw專用顏色。V
+  );
+  @each $setcolor, $color in $icon-list {
+    .UI-icon-#{$setcolor} {
+      background-color: $color;
+    }
+  }
+
+  // --- 訊息顏色設定 -----------------------------------
+  $message-list: (
+    muted: #3dd158,
+    //主要的邊框顏色。V
+      primary: #d13da0,
+    //重要的邊框顏色。
+      success: #5b6773,
+    //執行成功的邊框顏色。
+      info: #fdfdfd,
+    //提示信息的邊框顏色。
+      warning: #ffa600,
+    //警告邊框顏色。
+      danger: #ff0000,
+    //危险操作邊框顏色。
+      dark: #3a3a3a,
+    //深色邊框顏色。V
+      light: #9da8b5,
+    //浅色邊框顏色。
+      white: #fff,
+    //白色邊框顏色。
+  );
+  @each $setcolor, $color in $message-list {
+    .UI-message-#{$setcolor} {
+      border: 1px solid $color;
+      .account-message__item__point {
+        i {
+          background-color: $color;
+        }
+      }
+      .account-message__item__icon {
+        i {
+          background-color: $color;
+        }
+      }
+      .btn_close {
+        i {
+          background-color: $color;
+        }
+      }
+    }
+  }
+
+  // --- 連結文字&icon顏色設定 -----------------------------------
+  $f-link-list: (
+    muted: #cfcfcf,
+    //柔和的連結。
+      primary: #3dd158,
+    //重要的連結。
+      success: #5b6773,
+    //執行成功的連結。
+      info: #fdfdfd,
+    //提示信息的連結。
+      warning: #ffa600,
+    //警告連結。
+      danger: #ff0000,
+    //危险操作連結。
+      dark: #191b20,
+    //深色連結。
+      light: #9da8b5,
+    //浅色連結。
+      white: #fff,
+    //白色連結。
+      deposit: #0b8700,
+    //deposit專用顏色。
+      withdraw: #0084db,
+    //withdraw專用顏色。
+  );
+  @each $setcolor, $color in $f-link-list {
+    .UI-link-#{$setcolor} {
+      color: $color;
+      .UI-icon-#{$setcolor} {
+        background-color: $color;
+      }
+      &:hover {
+        color: lighten($color, 30%);
+        //icon連結顏色
+        i.UI-icon-#{$setcolor} {
+          background-color: lighten($color, 30%);
+        }
+      }
+    }
+    .UI-link-dark-#{$setcolor} {
+      color: $color;
+      .UI-icon-#{$setcolor} {
+        background-color: $color;
+      }
+      &:hover {
+        color: darken($color, 5%);
+        //icon連結顏色
+        i.UI-icon-#{$setcolor} {
+          background-color: darken($color, 5%);
+        }
+      }
+    }
+  }
+
+  // --- nav-content顏色設定 -----------------------------------
+  $nav-list: (
+    muted: #ffa600,
+    //次要的nav-content顏色。V
+      primary: #3dd158,
+    //主要的nav-content顏色。V
+      success: #5b6773,
+    //執行成功的nav-content顏色。
+      info: #fdfdfd,
+    //提示信息的nav-content顏色。
+      warning: #ffa600,
+    //警告nav-content顏色。
+      danger: #ff0000,
+    //危险操作nav-content顏色。
+      dark: #191b20,
+    //深色nav-content顏色。
+      light: #9da8b5,
+    //浅色nav-content顏色。
+      white: #fff,
+    //白色nav-content顏色。
+      deposit: #0b8700,
+    //deposit專用顏色。
+      withdraw: #0084db,
+    //withdraw專用顏色。
+  );
+  @each $setcolor, $color in $nav-list {
+    .UI-nav-content-#{$setcolor} {
+      color: darken($color, 20%);
+      border-bottom: 2px solid transparent;
+      &:hover,
+      &:active,
+      &.active {
+        color: $color;
+        border-bottom: 2px solid $color;
+      }
+    }
+  }
+
+  // --- email 開關按鈕顏色設定 -----------------------------------
+  $email-btn-list: (
+    muted: #3dd158,
+    //主要的開關按鈕。V
+      primary: #ffa600,
+    //主要的nav-content顏色。
+  );
+  @each $setcolor, $color in $email-btn-list {
+    .UI-email-btn-#{$setcolor} {
+      .email-notifications-item__button {
+        background-color: rgba(133, 133, 133, 0.5);
+      }
+
+      &:hover,
+      &:active,
+      &.active {
+        .email-notifications-item__button {
+          background-color: $color;
+        }
+      }
+    }
+  }
+
+  // --- 背景顏色設定 -----------------------------------
+  $bg-list: (
+    muted: #191b20,
+    //柔和的背景。V
+      primary: #0d0d0d,
+    //重要的背景。V
+      success: #d8d9d9,
+    //執行成功的背景。
+      info: #fdfdfd,
+    //提示信息的背景。
+      warning: #ffa600,
+    //警告背景。
+      danger: #ff0000,
+    //危险操作背景。
+      dark: #000,
+    //深色背景。
+      light: #9da8b5,
+    //浅色背景。
+  );
+  @each $setcolor, $color in $bg-list {
+    .UI-bg-#{$setcolor} {
+      background-color: $color;
+    }
+  }
+
+  // --- 按鈕顏色設定 -----------------------------------
+  $btn-list: (
+    muted: #c8caca,
+    //柔和的按鈕。V
+      primary: #333333,
+    //重要的按鈕。V
+      success: #00c43e,
+    //執行成功的按鈕。V
+      info: #fdfdfd,
+    //提示信息的按鈕。
+      warning: #ffa600,
+    //警告按鈕。
+      danger: #ff0000,
+    //危险操作按鈕。
+      dark: #000,
+    //深色按鈕。
+      light: #9da8b5,
+    //浅色按鈕。
+      tron: #565ba7,
+    //tron專用。
+      metamask: #d86100,
+    //metamask專用。
+      scatter: #0578ca,
+    //scatter專用。
+  );
+  @each $setcolor, $color in $btn-list {
+    //淺色轉向
+    .btn-#{$setcolor} {
+      font-size: 80%;
+      display: inline-block;
+      background-color: $color;
+      text-align: center;
+      padding: 12px 5px;
+      margin: 0 1%;
+      border-radius: 8px;
+      color: lighten($color, 50%);
+      &.active,
+      &:hover {
+        color: lighten($color, 70%);
+        background: darken($color, 30%);
+      }
+    }
+    //深色轉向
+    .btn-dark-#{$setcolor} {
+      font-size: 80%;
+      display: inline-block;
+      background-color: $color;
+      text-align: center;
+      padding: 10px 5px;
+      margin: 0 1%;
+      border-radius: 8px;
+      color: darken($color, 50%);
+      &.active,
+      &:hover {
+        color: darken($color, 70%);
+        background: darken($color, 30%);
+      }
+    }
+    .btn-gradient-#{$setcolor} {
+      display: inline-block;
+      border: 2px solid $color;
+      border-top: 2px solid lighten($color, 30%);
+      background-color: $color;
+      text-shadow: 0 1px $color;
+      text-align: center;
+      padding: 0 0.5%;
+      margin: 0 1%;
+      border-radius: 8px;
+      &.active,
+      &:hover {
+        text-shadow: 0 1px lighten($color, 15%);
+        background: linear-gradient(
+          to bottom,
+          lighten($color, 15%) 0%,
+          lighten($color, 10%) 49%,
+          darken($color, 5%) 50%,
+          $color 100%
+        );
+      }
+    }
+  }
+}
+
+// UI樣式_框架 style_frame
+
+//共用設定
+$color-list: (
+  danger: rgb(255, 80, 80),
+  fun: #f7f40a,
+  primary: #007bff,
+  success: #28a745,
+  info: #17a2b8,
+  beauty: #da199d,
+  light: #fff,
+  wraning: #ff7707,
+  dark: #000,
+  secondary: #868e96,
+  deposit: #0b8700,
+  withdraw: #0084db
+);
+
+/* ================= 頁面框架設定 ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', Helvetica, Arial, '微軟正黑體', Heiti TC,
+    'メイリオ', sans-serif;
+}
+html,
+body {
+  background: none;
+  font-size: 16px;
+  -webkit-text-size-adjust: none; /*iPhone旋轉後 文字不要放大*/
+}
+.wrapper {
+  width: 100%;
+}
+.container {
+  margin: 0 auto;
+  position: relative;
+}
+
+h1 {
+  display: none;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* ================= image設定 ================= */
+.img {
+  &-responsive {
+    max-width: 100%;
+  }
+  &-border {
+    border: 3px solid #fff;
+  }
+  &-radius {
+    border-radius: 15px;
+  }
+  &-block {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+/* ================= text設定 ================= */
+.txt {
+  &-center {
+    text-align: center;
+  }
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-indent-3em {
+    display: block;
+    margin-left: 3em;
+    text-indent: -3em;
+  }
+  &-indent-4em {
+    display: block;
+    margin-left: 4em;
+    text-indent: -4em;
+  }
+  &-indent-5em {
+    display: block;
+    margin-left: 5em;
+    text-indent: -5em;
+  }
+}
+
+/* ================= 文字設定 ================= */
+
+@each $setcolor, $color in $color-list {
+  .f-#{$setcolor} {
+    color: $color;
+  }
+}
+.f {
+  &-bold {
+    font-weight: bold;
+  }
+  &-lg {
+    font-size: 1.2em;
+  }
+  &-sm {
+    font-size: 0.8em;
+  }
+}
+
+/* ================= icon ================= */
+.ico {
+  display: inline-block;
+  padding: 2px 6px;
+  margin: 0 5px;
+  font-size: 0.8em;
+  color: #fff;
+  box-shadow: 1px 1px #555;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 16px;
+  @each $setcolor, $color in $color-list {
+    &-#{$setcolor} {
+      background-color: $color;
+
+      @if $setcolor == fun {
+        color: #f00;
+      } @else if $setcolor == wraning {
+        color: #c50018;
+      } @else if $setcolor == secondary {
+        color: #223141;
+      } @else if $setcolor == light {
+        color: #343434;
+      } @else {
+        color: #fff;
+      }
+    }
+  }
+}
+
+/* ================= 網格系統 ================= */
+.row {
+  text-align: center;
+  @include flexboxSetting(center);
+}
+.row_flex-start {
+  text-align: flex-start;
+  @include flexboxSetting(flex-start);
+}
+.col {
+  margin: 0.35%;
+}
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: 8% * $i - 0.05% * ($i - 1);
+  }
+}
+/* 五等分 */
+.col-2_4 {
+  width: 19%;
+}
+@include phone-width {
+  @for $i from 1 through 12 {
+    .m-col-#{$i} {
+      width: 8% * $i - 0.3% * $i;
+    }
+  }
+  .m-col-2_4 {
+    width: 19%;
+  }
+}
+@include ms-phone-width {
+  @for $i from 1 through 12 {
+    .ms-col-#{$i} {
+      width: 8% * $i - 0.3% * $i;
+    }
+    .ms-col-2_4 {
+      width: 19%;
+    }
+  }
+}
+
+/* ================= item__box ================= */
+$itemBorderColor: #9e4500;
+.item {
+  &__box {
+    margin: 10px auto;
+    background-color: #fff;
+    border-color: $itemBorderColor;
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+    position: relative;
+    &--shadow {
+      box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+    &-img {
+      @include flexboxSetting(center);
+      align-items: center;
+      border-radius: 8px 8px 0 0;
+      $i: 500;
+      @while $i > 50 {
+        &-#{$i} {
+          width: 100%;
+          height: $i + px;
+        }
+        &-#{$i} img {
+          max-height: $i + px;
+        }
+        $i: $i - 50;
+      }
+      img {
+        max-width: 100%;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+      }
+      &-m {
+        @include phone-width {
+          $i: 500;
+          @while $i > 50 {
+            &-#{$i} {
+              width: 100%;
+              height: $i + px;
+            }
+            &-#{$i} img {
+              max-height: $i + px;
+            }
+            $i: $i - 50;
+          }
+          img {
+            max-width: 100%;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+          }
+        }
+      }
+      &-ms {
+        @include ms-phone-width {
+          $i: 500;
+          @while $i > 50 {
+            &-#{$i} {
+              width: 100%;
+              height: $i + px;
+            }
+            &-#{$i} img {
+              max-height: $i + px;
+            }
+            $i: $i - 50;
+          }
+          img {
+            max-width: 100%;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+          }
+        }
+      }
+    }
+    &-title {
+      color: #fff;
+      background-color: $itemBorderColor;
+      text-align: center;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 12px 0;
+      &-2 {
+        height: 4em;
+        @include flexboxSetting(center);
+        align-items: center;
+      }
+    }
+    &-get {
+      text-align: center;
+      padding: 8px;
+    }
+    &-text {
+      padding: 15px;
+      text-align: left;
+    }
+  }
+}
+
+/* ================= table設定 ================= */
+// %tableColorSetting{
+// }
+.table {
+  word-break: break-all;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 20px 0;
+  &-full {
+    width: 100%;
+  }
+  &-half {
+    float: left;
+    width: 47%;
+    margin: 0 1.5%;
+    margin-top: 20px;
+  }
+  tr {
+    // th{}
+    td {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,1522 @@
+@charset "UTF-8";
+
+html,
+body {
+  scroll-behavior: smooth;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+//vue框架需求
+#__nuxt,
+#__layout,
+#__layout > div {
+  width: 100%;
+  height: 100%;
+}
+
+//欄位設定
+button,
+html input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  cursor: pointer;
+}
+input,
+select,
+textarea,
+button {
+  font-family: 'Helvetica Neue', '微軟正黑體', 'Helvetica', 'Arial',
+    'PingFangTC-Light', 'STHeitiTC-Light', 'Microsoft JhengHei', sans-serif;
+}
+input,
+select,
+textarea {
+  border-radius: 8px;
+  margin: 3px;
+  // margin-bottom: 2%;
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 8px 10px;
+  font-size: 95%;
+  color: #999;
+}
+
+//================= 按鈕預設 =================
+a {
+  text-decoration: none;
+}
+.box_btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+
+  a.btn_link {
+    display: inline-block;
+    font-size: 80%;
+    text-align: center;
+    padding: 5px;
+    margin: 0 1%;
+    background-color: #333;
+    color: #ccc;
+    border-radius: 8px;
+  }
+  a.btn_link:hover {
+    background-color: #000;
+    color: rgb(236, 142, 0);
+    transition: all 200ms ease-in-out;
+  }
+  a.btn_link_yellow {
+    display: inline-block;
+    font-size: 90%;
+    text-align: center;
+    padding: 5px;
+    margin: 0 1%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 220, 0, 1) 0%,
+      rgba(235, 188, 0, 1) 100%
+    );
+    color: #333;
+    transition: all 200ms ease-in-out;
+    border-radius: 8px;
+    font-weight: bolder;
+  }
+  a.btn_link_yellow:hover {
+    transition: all 200ms ease-in-out;
+    transform: scale(1.2);
+  }
+}
+
+.wrapper {
+  background-position: top center;
+  background-repeat: no-repeat;
+  font-size: 1em;
+  overflow-y: auto;
+  margin-top: 70px;
+  height: calc(100% - 70px);
+}
+
+@include phone-width {
+  .wrapper {
+    margin-top: 48px;
+    height: calc(100% - 48px);
+  }
+}
+@include ms-phone-width {
+  .wrapper {
+    font-size: 1em;
+    line-height: 1.1em;
+    height: calc(100% - 113px);
+  }
+}
+//================= 版頭 =================
+.header {
+  width: 100%;
+}
+.container {
+  width: 100%;
+}
+.content {
+  width: 100%;
+  max-width: 1300px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5em;
+  h2 {
+    line-height: 1.5em;
+    border-bottom: 2px solid rgba(133, 133, 133, 0.25);
+    margin-bottom: 0.2em;
+  }
+}
+//二級頁面 內坎頁
+.container-subpage {
+  height: calc(100% - 110px);
+  .subpage {
+    height: calc(100% - 70px);
+  }
+}
+//================= 頁面選單 =================
+.nav-header {
+  border: 0;
+  height: 70px;
+  border-radius: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .nav-header-logo {
+    display: block;
+    height: 80%;
+    width: 110px;
+    text-align: center;
+    img {
+      height: 100%;
+      width: auto;
+      margin: 0 auto;
+    }
+  }
+  //虛擬幣區塊
+  .topmenu_balance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: auto;
+    padding-right: 6px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    height: 42px;
+    .game_balance {
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      background: #24292f;
+      padding-left: 13px;
+      img {
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+      }
+      .balance_summ {
+        position: relative;
+        p {
+          font-size: 18px;
+          font-weight: 700;
+          white-space: nowrap;
+        }
+      }
+    }
+    //幣別清單
+    .balance-selector-container {
+      outline: none;
+      display: block;
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+    //svg箭頭_圖示尺寸
+    i {
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+      mask-size: 50%;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+    div.balance-selector-container:hover .balance-list,
+    div.balance-selector-container:focus .balance-list,
+    div.balance-selector-container:active .balance-list {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .balance-list:before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 19px;
+      margin: auto;
+      width: 12px;
+      height: 12px;
+      background: #24292f;
+      transform: rotate(45deg);
+    }
+    .balance-list {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      margin-top: 33px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: #24292f;
+      padding: 10px 0;
+      border-radius: 6px;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 200ms ease-in-out;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+      z-index: 10;
+      .balance-list__item {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        text-decoration: none;
+        height: 33px;
+        padding: 2px 20px;
+      }
+    }
+    //按鈕
+    .topmenu_buttons {
+      display: flex;
+      align-items: center;
+      margin-left: 5px;
+      button {
+        width: 75px;
+        height: 32px;
+        border-radius: 7px;
+        border: 1px solid #ff881b;
+        margin: 0 2px;
+        font-size: 12px;
+        font-weight: 700;
+        outline: none;
+      }
+      button.deposit {
+        border-color: #28983b;
+        background: #28983b;
+        &:hover {
+          background: #228734;
+          border-color: #228734;
+        }
+      }
+      button.withdraw {
+        background: #ea5656;
+        border-color: #ea5656;
+        &:hover {
+          background: #ff5b58;
+          border-color: #ff5b58;
+        }
+      }
+    }
+  }
+  .user-selector-member {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    .main-nav__link {
+      display: inline-block;
+      padding: 15px 12px;
+    }
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    //橫向選單
+    .main-nav {
+      transition: all 0.3s;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .main-nav_container {
+        list-style: none;
+        width: 100%;
+        .main-nav__item.user-selector {
+          display: none;
+        }
+        .main-nav__item {
+          position: relative;
+          margin: 0 12px;
+          display: inline-block;
+          //電腦版隱藏區
+          &.main-nav__item_rwd {
+            display: none;
+          }
+          //錢包區
+          &.main-nav__item_wallet {
+            display: none;
+          }
+          //行動版語言區塊
+          &.main-nav__item__language {
+            display: none;
+          }
+          .main-nav__link {
+            display: inline-block;
+            font-size: 14px;
+          }
+          img {
+            display: none;
+          }
+          &.main-nav__item__welcome {
+            display: none;
+          }
+          &.main-nav__item__login {
+            display: none;
+          }
+          &.main-nav__item__logout {
+            display: none;
+          }
+        }
+        .main-nav__link:hover,
+        .main-nav__link:focus,
+        .main-nav__link:active {
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+
+    //註冊.登入.語言
+    .user-selector {
+      margin-right: 5px;
+      position: relative;
+      display: inline-flex;
+      justify-content: flex-end;
+      align-items: center;
+      .main-nav__link {
+        display: inline-block;
+        color: #fff;
+      }
+      .main-nav__link:hover,
+      .main-nav__link:focus,
+      .main-nav__link:active {
+        text-decoration: none;
+        cursor: pointer;
+        color: #ff9200;
+      }
+      //使用者功能區塊
+      .user-selector-member-in {
+        display: inline-block;
+      }
+      i {
+        display: block;
+        width: 35px;
+        height: 35px;
+      }
+      .user-container {
+        outline: none;
+        display: inline-block;
+        position: relative;
+        margin-right: 15px;
+      }
+      .user-button {
+        vertical-align: middle;
+        cursor: pointer;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        //箭頭
+        .icon-arrow {
+          position: absolute;
+          bottom: 0;
+          left: 35px;
+          margin: auto;
+          width: 10px;
+          height: 10px;
+          mask-repeat: no-repeat;
+        }
+      }
+      div.user-container:hover .user-list,
+      div.user-container:focus .user-list,
+      div.user-container:active .user-list {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .user-list:before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        right: 18px;
+        margin: auto;
+        width: 12px;
+        height: 12px;
+        background: #24292f;
+        transform: rotate(45deg);
+      }
+      .user-list {
+        position: absolute;
+        top: 20px;
+        right: -8px;
+        margin-top: 33px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: #24292f;
+        padding: 10px 0;
+        border-radius: 6px;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 10;
+        transform: translateY(10px);
+        transition: all 200ms ease-in-out;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+        .user-list__item {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          text-decoration: none;
+          height: 33px;
+          padding: 2px 20px;
+          //svg圖示尺寸
+          i {
+            width: 25px;
+            height: 25px;
+            margin-right: 5px;
+          }
+        }
+      }
+
+      //語言列表區塊
+      .language-selector-container {
+        outline: none;
+        display: inline-block;
+        position: relative;
+        margin-right: 10px;
+      }
+      .language-button {
+        vertical-align: middle;
+        cursor: pointer;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        //箭頭
+        .icon-arrow {
+          position: absolute;
+          bottom: 0;
+          left: 35px;
+          margin: auto;
+          width: 10px;
+          height: 10px;
+          mask-repeat: no-repeat;
+        }
+      }
+      div.language-selector-container:hover .language-list,
+      div.language-selector-container:focus .language-list,
+      div.language-selector-container:active .language-list {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .language-list:before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        right: 19px;
+        margin: auto;
+        width: 12px;
+        height: 12px;
+        background: #24292f;
+        transform: rotate(45deg);
+      }
+      .language-list {
+        position: absolute;
+        top: 20px;
+        right: -8px;
+        margin-top: 33px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: #24292f;
+        padding: 10px 0;
+        border-radius: 6px;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 10;
+        transform: translateY(10px);
+        transition: all 200ms ease-in-out;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+        .language-list__item {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          text-decoration: none;
+          height: 33px;
+          padding: 2px 20px;
+        }
+      }
+    }
+  }
+
+  //漢堡選單
+  .hamburger {
+    display: none;
+    visibility: visible;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    //svg圖示尺寸
+    i {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .btn_menu {
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .btn_menu_X {
+      position: absolute;
+      display: block;
+      display: none;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  //漢堡選單-rwd
+  @include phone-width {
+    .hamburger {
+      display: inline-block;
+    }
+  }
+}
+@include phone-width {
+  .nav-header {
+    height: 48px;
+    transition: transform 0.3s ease-out;
+  }
+}
+
+//橫向選單-rwd
+@include phone-width {
+  .nav-header {
+    .container {
+      position: fixed;
+      top: 48px;
+      left: 100%;
+      height: calc(100vh - 48px);
+      width: 100%;
+      transition: transform 0.3s ease-out;
+      transform: translateX(0%);
+      padding-top: 10px;
+      font-weight: 600;
+      font-family: Aaverta, sans-serif;
+      .main-nav {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        padding-bottom: 5%;
+        //卷軸控制
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+          background: hsla(0, 0%, 100%, 0.12);
+        }
+        &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          border-radius: 10px;
+        }
+
+        .topmenu_balance {
+          position: absolute;
+          top: -45px;
+        }
+        .main-nav_container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-content: flex-start;
+          width: 100%;
+          max-width: 600px;
+          .main-nav__item {
+            text-align: center;
+            line-height: 1em;
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
+            //電腦版隱藏區
+            &.main-nav__item_rwd {
+              display: inline-block;
+            }
+            //歡迎
+            &.main-nav__item__welcome {
+              margin-top: 0.3em;
+              margin-bottom: 0.3em;
+              display: inline-block;
+              img {
+                display: block;
+                margin: 0 auto;
+                width: 28px;
+                margin-bottom: 5px;
+              }
+              span {
+                display: block;
+                font-weight: normal;
+                font-size: 11px;
+              }
+            }
+            //登入
+            &.main-nav__item__login {
+              display: inline-block;
+              margin-top: 0.3em;
+              margin-bottom: 0.3em;
+            }
+            //登出
+            &.main-nav__item__logout {
+              display: inline-block;
+            }
+
+            //行動版語言區
+            &.main-nav__item__language {
+              display: block;
+              a {
+                width: 65px;
+              }
+              img {
+                width: 33px;
+                margin-bottom: 6px;
+              }
+            }
+            .main-nav__link {
+              display: inline-block;
+              width: 100%;
+            }
+
+            //icon 大小位置
+            i {
+              display: block;
+              width: 40px;
+              height: 40px;
+              margin: 0 auto;
+            }
+
+            .btn_login {
+              width: 91%;
+              line-height: 46px;
+              border-radius: 6px;
+              background: #eaa40d;
+              color: #000;
+              &:hover {
+                color: #6e3f00;
+              }
+            }
+            //錢包區塊
+            &.main-nav__item_wallet {
+              margin-top: 0.3em;
+              margin-bottom: 0.3em;
+              display: flex;
+              justify-content: center;
+              flex-wrap: wrap;
+              a {
+                display: block;
+                width: 45%;
+                border-radius: 6px;
+                margin: 0.5%;
+                line-height: 46px;
+                img {
+                  display: inline-block;
+                  width: 30px;
+                  vertical-align: middle;
+                  margin-right: 5px;
+                }
+                &.btn_tronlink {
+                  background-repeat: no-repeat;
+                  background-position: 3% center;
+                  border: 1px #9490e6 solid;
+                  color: #9490e6;
+                  &:hover {
+                    border: 1px #b1aef5 solid;
+                    color: #b1aef5;
+                  }
+                }
+                &.btn_metamask {
+                  background-repeat: no-repeat;
+                  background-position: 3% center;
+                  border: 1px #fe830b solid;
+                  color: #fe830b;
+                  &:hover {
+                    border: 1px #fca249 solid;
+                    color: #fca249;
+                  }
+                }
+                &.btn_scatter {
+                  background-repeat: no-repeat;
+                  background-position: 3% center;
+                  border: 1px #2a98e5 solid;
+                  color: #2a98e5;
+                  &:hover {
+                    border: 1px #5ab1f0 solid;
+                    color: #5ab1f0;
+                  }
+                }
+                &.btn_backup {
+                  border: 1px #4ac35f solid;
+                  color: #4ac35f;
+                  &:hover {
+                    border: 1px #50ec6a solid;
+                    color: #50ec6a;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .user-selector {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+    .container-active {
+      transform: translateX(-100%);
+    }
+  }
+}
+@include ms-phone-width {
+  .nav-header {
+    .container {
+      max-width: 100%;
+    }
+  }
+}
+
+//================= svg圖示 =================
+//arrow_信件svg圖示
+.icon-arrow {
+  mask: url(~assets/images/navbar/icon_arrow.svg);
+}
+//MAIN_首頁svg圖示
+.icon-main {
+  mask: url(~assets/images/navbar/icon_main.svg);
+}
+//Account_會員svg圖示
+.icon-account {
+  mask: url(~assets/images/navbar/icon_account.svg);
+}
+//Wallet_錢包svg圖示
+.icon-wallet {
+  mask: url(~assets/images/navbar/icon_wallet.svg);
+}
+//language_語系svg圖示
+.icon-language {
+  mask: url(~assets/images/navbar/icon_language.svg);
+}
+//faq_問題回報svg圖示
+.icon-faq {
+  mask: url(~assets/images/navbar/icon_faq.svg);
+}
+//about_關於svg圖示
+.icon-about {
+  mask: url(~assets/images/navbar/icon_about.svg);
+}
+//contact_聯絡svg圖示
+.icon-contact {
+  mask: url(~assets/images/navbar/icon_contact.svg);
+}
+//privacy_隱私svg圖示
+.icon-privacy {
+  mask: url(~assets/images/navbar/icon_privacy.svg);
+}
+//logout_登出svg圖示
+.icon-logout {
+  mask: url(~assets/images/navbar/icon_logout.svg);
+}
+//locked_帳號安全svg圖示
+.icon-locked {
+  mask: url(~assets/images/navbar/icon_locked.svg);
+}
+//bell_信件svg圖示
+.icon-bell {
+  mask: url(~assets/images/navbar/icon_bell.svg);
+}
+//bell_信件svg圖示
+.icon-hamburger {
+  mask: url(~assets/images/navbar/icon_hamburger.svg);
+}
+//bell_信件svg圖示
+.icon-hamburger-close {
+  mask: url(~assets/images/navbar/icon_hamburger_close.svg);
+}
+//close_信件svg圖示
+.icon-close {
+  mask: url(~assets/images/page/icon_close.svg);
+}
+//deposit存款svg圖示
+.icon-deposit {
+  mask: url(~assets/images/page/icon_deposit.svg);
+}
+//withdraw退出svg圖示
+.icon-withdraw {
+  mask: url(~assets/images/page/icon_withdraw.svg);
+}
+//change變更svg圖示
+.icon-change {
+  mask: url(~assets/images/page/icon_change.svg);
+}
+
+//================= 主項目選單 =================
+.main_menu {
+  height: 100px;
+  background: #0d0d0d;
+  width: 100%;
+  //滑動選單_基本
+  .scrtabs-tab-container {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1300px;
+    height: 100%;
+    //左右箭頭
+    .scrtabs-tab-scroll-arrow {
+      color: #ffffff;
+      cursor: pointer;
+      float: left;
+      font-size: 25px;
+      width: 20px;
+      padding: 0;
+      height: 100%;
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      .glyphicon {
+        position: relative;
+        display: inline-block;
+        height: 100%;
+      }
+      &.scrtabs-js-tab-scroll-arrow-left {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 4%;
+        background-image: url(~assets/images/arrow_left.svg);
+        cursor: pointer;
+        filter: grayscale(1);
+        &:hover {
+          filter: grayscale(0);
+        }
+      }
+      &.scrtabs-js-tab-scroll-arrow-right {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 4%;
+        background-image: url(~assets/images/arrow_right.svg);
+        cursor: pointer;
+        filter: grayscale(1);
+        &:hover {
+          filter: grayscale(0);
+        }
+      }
+    }
+    //滑動選單內容
+    .scrtabs-tabs-fixed-container {
+      margin: 0px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: clip;
+      font-size: 0px;
+      position: absolute;
+      top: 0px;
+      left: 4%;
+      right: 4%;
+      width: 92%;
+      height: 100%;
+      .nav-tabs {
+        height: 100%;
+        overflow: auto;
+      }
+      .nav-tabs > li {
+        float: left;
+        list-style: none;
+        height: 100%;
+        a {
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          flex-wrap: wrap;
+          width: 100%;
+          text-align: center;
+          color: #a4a4a4;
+          height: 100%;
+          padding-top: 5px;
+          img {
+            display: block;
+            width: 70%;
+            max-width: 85px;
+            margin: 0 auto;
+            filter: grayscale(1);
+          }
+          span {
+            width: 100%;
+            display: block;
+            font-size: 12px;
+          }
+        }
+        a.active,
+        a:hover {
+          color: #fff;
+          height: 100%;
+          color: #3dd158;
+          img {
+            filter: grayscale(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+//================= 搜尋 =================
+.main_search {
+  width: 100%;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 5px;
+    input {
+      width: calc(100% - 140px);
+      height: 52px;
+      margin: 0;
+      background: #2b3037;
+      border: none;
+      outline: none;
+    }
+    .game-buttons {
+      .search_provider {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .search {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding-top: 1px;
+          z-index: 2;
+          position: relative;
+          top: -1px;
+          span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            width: 54px;
+            height: 52px;
+            line-height: 54px;
+            position: absolute;
+            background: #2b3037;
+            border-radius: 5px;
+            text-align: center;
+            color: #8f939e;
+            b {
+              display: none;
+            }
+          }
+        }
+        .provider {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 10px;
+          position: relative;
+          top: -1px;
+          button {
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 54px;
+            height: 54px;
+            cursor: pointer;
+            background: #2b3037;
+            border-radius: 5px;
+            p {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//================= 橫幅AD_A =================
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.main-slick .slick-slide {
+  position: relative;
+  height: 100vh;
+}
+.main-slick .slick-slide.slick-current .sbg {
+  animation-name: intro;
+  animation-iteration-count: infinite;
+}
+.main-slick .slick-slide .sbg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center center;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+}
+//橫幅AD_A-rwd
+@include ms-phone-width {
+  .main-slick .slick-slide {
+    height: 50vh;
+  }
+}
+//微動畫
+@keyframes intro {
+  0% {
+    transform: scale(1);
+  }
+  97% {
+    transform: scale(1.08);
+  }
+}
+
+//================= 首頁內容區 =================
+.games-all {
+  //標題樣式
+  .games-title {
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      line-height: 2.5em;
+      padding: 8px 5px 0px 5px;
+      h2 {
+        color: #fff;
+      }
+      h3 {
+        color: #3dd158;
+        img {
+          display: inline-block;
+          vertical-align: -15%;
+          width: 30px;
+        }
+      }
+    }
+  }
+  //遊戲列表
+  .games-list {
+    .content {
+      padding: 0;
+      overflow: hidden;
+      background-color: #0d0d0d;
+      .games-list__game {
+        overflow: auto;
+        width: 135%;
+        @include phone-width {
+          width: 165%;
+        }
+        @include ms-phone-width {
+          width: 215%;
+        }
+        //遊戲
+        .games-list__game__item {
+          float: left;
+          margin: 5px;
+          width: 13.5%;
+          .games-list__game__image {
+            width: 100%;
+            padding-bottom: 60.5%;
+            background-size: 101%;
+            background-position: center;
+          }
+          .games-list__game__text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #333;
+            h3 {
+              color: #fff;
+              font-weight: normal;
+              font-size: 95%;
+              text-align: center;
+              width: calc(100% - 42px);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+            }
+            .games-list__game__text__buttons {
+              width: 35px;
+              height: 35px;
+              background-image: url(~assets/images/games-list__game__text__buttons.svg);
+              background-size: 85%;
+              background-position: center;
+              background-repeat: no-repeat;
+              cursor: pointer;
+              filter: opacity(0.5);
+              &:hover {
+                filter: opacity(1);
+              }
+              a {
+                b {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//================= 遊戲介紹區 =================
+.games-list {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  //雙欄位
+  .games-list__game {
+    transition: all 0.3s;
+    .games-list__game__content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      .games-list__game__image {
+        width: 55%;
+        padding-bottom: 33.52%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        @media only screen and (max-width: 1024px) {
+          width: 100%;
+          padding-bottom: 60.946%;
+        }
+      }
+      // .games-list__game__text {
+      //   h4 {
+      //   }
+      //   .games-list__game__text__buttons {
+      //   }
+      // }
+    }
+  }
+  //單欄位
+  .games-list__game.thumb-mode {
+    width: 100%;
+    .games-list__game__content {
+      .games-list__game__image {
+        width: 55%;
+      }
+      .games-list__game__text {
+        width: 45%;
+      }
+    }
+  }
+  .thumb-mode:nth-child(even) .games-list__game__image {
+    order: 3;
+  }
+}
+
+@include phone-width {
+  //雙欄位
+  .games-list {
+    .games-list__game {
+      width: 33%;
+      .games-list__game__content {
+        margin-bottom: 4.5%;
+      }
+    }
+  }
+  //單欄位
+  .games-list {
+    .games-list__game.thumb-mode {
+      width: 100%;
+      .games-list__game__content {
+        .games-list__game__image {
+          padding-bottom: 26.6%;
+        }
+      }
+    }
+  }
+}
+@include ms-phone-width {
+  //雙欄位
+  .games-list {
+    .games-list__game {
+      width: 50%;
+    }
+  }
+}
+
+//================= 遊戲介紹頁面內容區 =================
+.content_info {
+  .container {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    .img-100 {
+      flex: 0 50%;
+      display: block;
+      .game_info_image {
+        width: 100%;
+        padding-bottom: 60.946%;
+        border-radius: 10px;
+        box-shadow: 2px 2px 48px -16px rgba(0, 0, 0, 0.5);
+        margin-bottom: 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+    .game_info {
+      flex: 1 50%;
+      line-height: 1.5em;
+      padding-left: 30px;
+    }
+    .title-group {
+      h4 {
+        color: #333;
+        margin-right: 1em;
+        font-weight: bold;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1.75rem;
+        line-height: 1.25em;
+      }
+      p {
+        opacity: 0.5;
+        text-align: justify;
+        letter-spacing: 0.5px;
+        line-height: 1.75em;
+        font-size: 0.9375rem;
+      }
+      .btn-more {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+        span {
+          display: inline-block;
+          vertical-align: middle;
+          color: #969696;
+          font-weight: bold;
+          font-size: 0.875rem;
+        }
+      }
+      .btn-more:before {
+        display: inline-block;
+        vertical-align: middle;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        content: '';
+        background-image: url(~assets/images/iconset.svg);
+        display: inline-block;
+        background-size: auto 100%;
+        background-position: 0% 0;
+      }
+    }
+  }
+  .spec-wrap {
+    width: 100%;
+    max-width: 1280px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+  }
+  .wrap {
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .spec {
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 2px 2px 48px -16px rgba(0, 0, 0, 0.3);
+    > ul {
+      padding: 20px 50px;
+      display: block;
+      overflow: hidden;
+      margin: 0;
+      > li {
+        padding: 15px 0;
+        display: block;
+        overflow: hidden;
+        border-bottom: 1px solid #eee;
+        font-size: 0px;
+        div:nth-of-type(1) {
+          font-size: 1rem;
+          width: 35%;
+          font-weight: bold;
+          color: #272727;
+          display: inline-block;
+          vertical-align: middle;
+          overflow: hidden;
+        }
+        div:nth-of-type(2) {
+          font-size: 0.9375rem;
+          width: 65%;
+          color: #4d4d4d;
+          display: inline-block;
+          vertical-align: middle;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .content_info {
+    .container {
+      display: block;
+      .img-100 {
+        .game_info_image {
+          padding-bottom: 60.946%;
+        }
+      }
+      .game_info {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+//================= checkbox 套件 =================
+/* The container */
+label.container {
+  display: block;
+  position: relative;
+  padding-left: 27px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 82%;
+  user-select: none;
+  line-height: 1.25em;
+}
+
+/* Hide the browser's default checkbox */
+label.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+label.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+label.container input:checked ~ .checkmark {
+  background-color: #000;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+label.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+label.container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+//* ================= 動態 ================= */
+//區塊飛入Y
+.box_flipInY {
+  animation-name: box_flipInY;
+  animation-duration: 0.08s;
+  animation-timing-function: linear;
+  visibility: visible !important;
+}
+
+@keyframes box_flipInY {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.box_flipInX {
+  animation-name: box_flipInX;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  visibility: visible !important;
+}
+
+//動畫延遲
+.delay-100ms {
+  animation-delay: 0.1s;
+}
+.delay-200ms {
+  animation-delay: 0.2s;
+}
+.delay-300ms {
+  animation-delay: 0.3s;
+}
+.delay-400ms {
+  animation-delay: 0.4s;
+}
+.delay-500ms {
+  animation-delay: 0.5s;
+}
+.delay-600ms {
+  animation-delay: 0.6s;
+}
+.delay-900ms {
+  animation-delay: 0.9s;
+}
+.delay-1000ms {
+  animation-delay: 1s;
+}
+.delay-1200ms {
+  animation-delay: 1.2s;
+}
+.delay-1500ms {
+  animation-delay: 1.5s;
+}
+.delay-2000ms {
+  animation-delay: 2s;
+}
+.delay-3000ms {
+  animation-delay: 3s;
+}

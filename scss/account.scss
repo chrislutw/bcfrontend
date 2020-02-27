@@ -1,0 +1,279 @@
+@charset "UTF-8";
+
+//================= account 帳戶 資料 設定 =================
+//content選單
+.nav-content-account {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  .nav-content__item {
+    float: left;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    width: 33.33%;
+    a {
+      width: 100%;
+      height: 100%;
+      line-height: 3.5em;
+    }
+  }
+}
+//表格
+.table-balance {
+  img {
+    width: 32px;
+    height: 32px;
+  }
+  position: relative;
+  &:before {
+    content: '';
+    animation: gradient 10s ease var(--infinite);
+    background-color: rgba(133, 133, 133, 0.3);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 4px;
+    border-radius: 4px 4px 0 0;
+  }
+  th {
+    line-height: 2.5em;
+    background-color: rgba(133, 133, 133, 0.3);
+  }
+
+  th:first-child {
+    border-radius: 4px 0 0 0;
+    border-bottom: none;
+  }
+  th:last-child {
+    border-radius: 0 4px 0 0;
+  }
+  tr {
+    line-height: 1.5em;
+    border-bottom: 1px solid #333;
+  }
+  td {
+    padding: 8px 0;
+  }
+  //按鈕調整
+  .box_btn_container {
+    font-size: 80%;
+    a {
+      width: 40%;
+      min-width: 120px;
+      max-width: 160px;
+      font-weight: bold;
+    }
+    //圖片大小
+    i {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+    }
+  }
+  //YES & NO 启用顯示開或關
+  .enable-display {
+    font-size: 80%;
+    display: inline-block;
+    border-radius: 8px;
+    background-color: rgba(71, 71, 71, 0.5);
+    min-width: 40px;
+    padding: 0 2px;
+  }
+}
+
+//================= transaction 交易 紀錄 =================
+.transaction {
+  img {
+    width: 20px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+  }
+  .transaction-select,
+  .transaction-th,
+  .transaction-tr {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3px;
+    margin-bottom: 3px;
+  }
+  .transaction-select {
+    /deep/ .form-item > div {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      padding: 2px 10px;
+      input {
+        padding: 12px 5px;
+        font-size: 15px;
+      }
+    }
+    select {
+      width: 100%;
+    }
+    /deep/ .el-range-input {
+      background-color: map-get($form-list, 'primary');
+    }
+    /deep/ .el-range-separator {
+      color: map-get($f-list, 'muted');
+    }
+  }
+  .transaction-tr {
+    border-radius: 8px;
+  }
+  .transaction-tr:nth-child(odd) {
+    background-color: rgba(133, 133, 133, 0.25);
+  }
+  .transaction-tr:nth-child(even) {
+    background-color: rgba(133, 133, 133, 0.5);
+  }
+}
+
+//================= email-notifications-item 頁面 =================
+.email-notifications-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 45px;
+  border-bottom: 1px solid #333;
+  .email-notifications-item__title {
+    display: inline-block;
+  }
+  .email-notifications-item__button {
+    display: inline-block;
+    position: relative;
+    border-radius: 25px;
+    width: 50px;
+    height: 29px;
+    transition: 0.1s;
+    //圖片大小
+    i {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      width: 23px;
+      height: 23px;
+      margin: 3px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
+      transition: 0.1s;
+    }
+  }
+  &:hover,
+  &:active,
+  &.active {
+    .email-notifications-item__button {
+      i {
+        left: 21px;
+      }
+    }
+  }
+}
+
+//================= nav-page 頁面按鈕 =================
+.nav-page {
+  display: flex;
+  justify-content: center;
+  .nav-page__item {
+    display: inline-block;
+    list-style: none;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    margin: 2px;
+    .nav-page__link {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      line-height: 43px;
+      border-radius: 8px;
+      border: 2px solid rgba(133, 133, 133, 0.25);
+      &:hover,
+      &:active,
+      &.active {
+        background-color: rgba(133, 133, 133, 0.25);
+      }
+    }
+    .nav-page__left {
+      line-height: 40px;
+      i {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        transform: rotate(90deg);
+      }
+    }
+    .nav-page__right {
+      line-height: 40px;
+      i {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+//================= message 使用者 訊息 =================
+.account-message {
+  height: 100%;
+  overflow-y: scroll;
+  .account-message__item {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    .account-message__item__point {
+      i {
+        display: inline-block;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+      }
+    }
+    .account-message__item__icon {
+      padding: 0 15px;
+      i {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+      }
+    }
+    // .account-message__item__message {
+    // }
+    .btn_close {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      width: 43px;
+      height: 43px;
+      i {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        vertical-align: middle;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}

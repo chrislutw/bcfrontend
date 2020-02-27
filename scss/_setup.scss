@@ -1,0 +1,69 @@
+﻿//基本設定
+@mixin flexboxSetting($justify) {
+  display: flex;
+  justify-content: $justify;
+  flex-wrap: wrap;
+  @content;
+}
+
+//小螢幕電腦設定
+@mixin ms-pc-width() {
+  @media only screen and (max-width: 1279px) and (min-width: 812px) {
+    @content;
+  }
+}
+//phone設定
+@mixin phone-width() {
+  @media only screen and (max-width: 1148px) {
+    @content;
+  }
+}
+@mixin ms-phone-width() {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+//行動裝置橫版
+@mixin landscape-phone-width() {
+  @media only screen and (orientation: landscape) {
+    @content;
+  }
+}
+//行動裝置直版
+@mixin landscape-phone-width() {
+  @media only screen and (orientation: portrait) {
+    @content;
+  }
+}
+
+$form-list: (
+  muted: #ffffff,
+  //次要的Form顏色。V
+    primary: #24292f,
+  //主要的Form顏色。V
+);
+
+$f-list: (
+  muted: #c5ccd4,
+  //次要的文字。V
+    primary: #6e7c8a,
+  //主要的文字。V
+    success: #00c020,
+  //執行成功的文字。
+    info: #17a2b8,
+  //提示信息的文字。
+    warning: #ffa600,
+  //警告文字。
+    danger: #ff0000,
+  //危险操作文字。
+    dark: #424242,
+  //深色文字。V
+    light: #c5ccd4,
+  //浅色文字。
+    white: #fff,
+  //白色文字。
+    deposit: #0b8700,
+  //deposit專用顏色。
+    withdraw: #0084db,
+  //withdraw專用顏色。
+);

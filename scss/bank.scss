@@ -1,0 +1,440 @@
+@charset "UTF-8";
+
+html,
+body {
+  background-color: #000;
+}
+.content_bank {
+  margin: 0 auto;
+  background: linear-gradient(
+    to bottom,
+    rgba(33, 96, 150, 1) 0,
+    rgba(0, 61, 115, 1) 40px,
+    rgba(0, 61, 115, 1) 45px,
+    rgba(1, 61, 117, 1) 60px,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  .container {
+    max-width: 950px;
+    padding-top: 5px;
+    color: #999;
+    background: linear-gradient(
+      to bottom,
+      rgba(33, 96, 150, 1) 0,
+      rgba(0, 61, 115, 1) 2px,
+      rgba(0, 61, 115, 1) 3px,
+      rgba(1, 61, 117, 1) 4px,
+      rgba(0, 0, 0, 1) 5px,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+  // .box_btn_container {
+  //   a.btn_link {
+  //   }
+  // }
+}
+
+//頁籤內容區塊_深藍
+/deep/ .scrtabs-container.nav_blue {
+  background: linear-gradient(
+    to bottom,
+    rgba(33, 96, 150, 1) 0,
+    rgba(0, 61, 115, 1) 4px,
+    rgba(0, 61, 115, 1) 6px,
+    rgba(1, 61, 117, 1) 10px,
+    rgba(0, 0, 0, 1) 120px,
+    rgba(0, 0, 0, 1) 100%
+  );
+  border-radius: 0 0 10px 10px;
+  padding: 0;
+}
+
+//頁籤內容區
+/deep/ .scrtabs-container {
+  /deep/ .box_btn_container {
+    padding: 15px 0 6px 0;
+    .btn_link {
+      line-height: 2em;
+      border: 3px solid #b3c2cb;
+      border-top: 3px solid #edf0f1;
+      color: #333;
+      background-color: #9fa1a2;
+      text-shadow: 0 1px #c0c0c0;
+      padding: 0;
+      &.active,
+      &:hover {
+        color: #000;
+        background: linear-gradient(
+          to bottom,
+          rgba(237, 240, 241, 1) 0%,
+          rgba(237, 240, 241, 1) 49%,
+          rgba(205, 214, 219, 1) 50%,
+          rgba(205, 214, 219, 1) 50%,
+          rgba(179, 194, 203, 1) 100%
+        );
+      }
+      &.f-deposit {
+        font-size: 1.35em;
+        font-weight: bold;
+        filter: grayscale(1);
+        img {
+          width: 41px;
+          margin-right: 3px;
+          vertical-align: middle;
+          color: #000;
+        }
+        &.active,
+        &:hover {
+          filter: grayscale(0);
+          color: #0b8700;
+          text-shadow: 0 1px #edf0f1;
+        }
+      }
+      &.f-withdraw {
+        font-size: 1.25em;
+        line-height: 45px;
+        font-weight: bold;
+        filter: grayscale(1);
+        img {
+          width: 41px;
+          margin-right: -5px;
+          vertical-align: middle;
+          color: #000;
+        }
+        &.active,
+        &:hover {
+          filter: grayscale(0);
+          color: #0084db;
+          text-shadow: 0 1px #edf0f1;
+        }
+      }
+    }
+  }
+  padding: 4%;
+  //平台連結
+  .box_btn_container_address {
+    @include flexboxSetting(flex-end);
+    .copy-button {
+      padding: 3px 8px;
+      img {
+        width: 16px;
+        margin-right: 5px;
+        vertical-align: middle;
+        color: #000;
+      }
+    }
+    //QR_code
+    .QRcode-container {
+      outline: none;
+      display: block;
+      position: relative;
+    }
+    .QRcode-button {
+      vertical-align: middle;
+      cursor: pointer;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      font-size: 80%;
+      text-align: center;
+      padding: 3px 8px;
+      border-radius: 8px;
+      img {
+        width: 16px;
+        margin-right: 5px;
+        vertical-align: middle;
+        color: #000;
+      }
+    }
+    div.QRcode-container:hover .QRcode-list,
+    div.QRcode-container:focus .QRcode-list,
+    div.QRcode-container:active .QRcode-list {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .QRcode-list:before {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 18px;
+      margin: auto;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      transform: rotate(45deg);
+    }
+    .QRcode-list {
+      position: absolute;
+      opacity: 0;
+      bottom: calc(100% + 7px);
+      right: 0;
+      visibility: hidden;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+      transform: translateY(10px);
+      transition: all 200ms ease-in-out;
+      .QRcode-list__item {
+        padding: 5px;
+        color: #000;
+        img {
+          display: block;
+        }
+      }
+    }
+  }
+  //入金輸入
+  .platform-container {
+    margin: 0.8em 0;
+    @include flexboxSetting(space-between);
+    .platform-input {
+      width: 49%;
+      // &.platform_input_sum {
+      // }
+      // &.platform_input_position {
+      // }
+      input {
+        width: 100%;
+      }
+    }
+    @include phone-width {
+      .platform-input {
+        width: 100%;
+      }
+    }
+  }
+  //平台餘額
+  .platform_balance {
+    line-height: 1.3em;
+    @include flexboxSetting(space-between);
+    align-items: center;
+    margin-bottom: 20px;
+    .balance_title {
+      text-align: left;
+    }
+    .balance_no {
+      text-align: right;
+    }
+    .btn_history {
+      margin: 10px 0;
+      .btn_link {
+        display: inline-block;
+        background-color: #666;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 6px;
+        &.withdraw {
+          background-color: #0084db;
+          &.active,
+          &:hover {
+            background-color: #0070bb;
+          }
+        }
+        &.deposit {
+          background-color: #ffca3b;
+          color: #000;
+          &.active,
+          &:hover {
+            background-color: rgb(221, 173, 41) b;
+          }
+        }
+      }
+    }
+  }
+  .table {
+    tr {
+      &:nth-child(odd) {
+        background: rgba(63, 63, 63, 0.144);
+      }
+      th {
+        text-align: center;
+        font-size: 90%;
+        font-weight: normal;
+        padding: 5px;
+        background: #363636;
+        border-right: 1px #000 solid;
+      }
+      td {
+        text-align: center;
+        font-size: 80%;
+        padding: 5px;
+        border-right: 1px rgba(63, 63, 63, 0.507) solid;
+        border-top: 2px #000 solid;
+        border-bottom: 2px #000 solid;
+        &:last-child {
+          border-right: 1px transparent solid;
+        }
+      }
+    }
+  }
+}
+
+//頁籤選單_基本
+/deep/ .scrtabs-tab-container {
+  position: relative;
+  height: 45px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #a4a4a4;
+
+  //左右箭頭
+  .scrtabs-tab-scroll-arrow {
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font-size: 25px;
+    width: 20px;
+    padding: 0;
+    .glyphicon {
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      font-family: 'Glyphicons Halflings';
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    &.scrtabs-js-tab-scroll-arrow-left {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 26px;
+      cursor: pointer;
+      background: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 0) 0%,
+        rgb(0, 0, 0) 100%
+      );
+      .glyphicon-chevron-left:before {
+        content: '\25C0';
+        line-height: 45px;
+        padding-left: 5px;
+      }
+    }
+    &.scrtabs-js-tab-scroll-arrow-right {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      width: 26px;
+      cursor: pointer;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgb(0, 0, 0) 100%
+      );
+      .glyphicon-chevron-right:before {
+        content: '\25B6';
+        line-height: 45px;
+        padding-left: 5px;
+      }
+    }
+  }
+  //頁籤內容
+  .scrtabs-tabs-fixed-container {
+    margin: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    font-size: 0px;
+    position: absolute;
+    top: 0px;
+    left: 26px;
+    right: 26px;
+    // .nav-tabs {
+    // }
+    .nav-tabs > li {
+      float: left;
+      list-style: none;
+      a {
+        line-height: 44px;
+        position: relative;
+        height: 44px;
+        font-size: 18px;
+        display: block;
+        padding: 0 20px 0 10px;
+        border-radius: 5px 5px 0 0;
+        margin-right: 3px;
+        color: #a4a4a4;
+        border-top: 1px solid #a4a4a4;
+        border-left: 1px solid #a4a4a4;
+        border-right: 1px solid #a4a4a4;
+        img {
+          width: 20px;
+          margin-right: 3px;
+          vertical-align: middle;
+          color: #000;
+        }
+      }
+      a.active,
+      a:hover {
+        color: #fff;
+        height: 45px;
+        background: linear-gradient(
+          to bottom,
+          rgba(51, 51, 51, 1) 0%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        border-top: 1px solid #a4a4a4;
+        border-left: 1px solid #a4a4a4;
+        border-right: 1px solid #a4a4a4;
+        &:before {
+          content: '';
+          border-right: none;
+        }
+      }
+    }
+  }
+}
+
+//頁籤選單_深藍
+/deep/ .scrtabs-tab-container.nav_blue {
+  border-radius: 6px;
+  border-bottom: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 18, 1) 0%,
+    rgba(41, 45, 54, 1) 10%,
+    rgba(41, 45, 54, 1) 90%,
+    rgba(11, 15, 18, 1) 100%
+  );
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.9) inset;
+  //頁籤內容
+  .scrtabs-tabs-fixed-container {
+    .nav-tabs > li {
+      padding-top: 6px;
+      a {
+        color: #fff;
+        border: none;
+        line-height: 38px;
+        &:before {
+          content: '';
+          position: absolute;
+          top: 5px;
+          right: 0;
+          height: 28px;
+          width: 1px;
+          border-right: 1px solid #595c61;
+        }
+      }
+      a.active,
+      a:hover {
+        color: #fff;
+        background: linear-gradient(
+          to bottom,
+          rgba(42, 104, 155, 1) 0%,
+          rgba(0, 61, 115, 1) 23%,
+          rgba(0, 61, 115, 1) 23%,
+          rgba(0, 71, 122, 1) 31%,
+          rgba(1, 61, 117, 1) 100%
+        );
+        &:before {
+          content: '';
+          border-right: none;
+        }
+      }
+    }
+  }
+}

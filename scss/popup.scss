@@ -1,0 +1,393 @@
+﻿@charset "UTF-8";
+
+//================= 彈跳視窗 =================
+select {
+  padding: 6px 10px;
+}
+//模糊
+.blur {
+  filter: blur(10px);
+  overflow: hidden;
+  margin: 0;
+  height: 100%;
+}
+.box_popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.7);
+  //定位區
+  .box_popup_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;
+    padding: 1.5em 1.5em;
+    display: flex;
+    justify-content: center;
+    //關閉按鈕
+    a.btn_x {
+      position: fixed;
+      display: block;
+      top: 1.4%;
+      right: 1.4%;
+      width: 2em;
+      height: 2em;
+      background-image: url(~assets/images/close.svg);
+      background-size: 100% auto;
+      background-position: center top;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  }
+  //點擊區
+  .layer_click {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 101;
+  }
+  //內容區
+  .box_popup_container_main {
+    position: relative;
+    padding: 1.5%;
+    line-height: 2.2em;
+    background: linear-gradient(180deg, #262a32, #1e2329);
+    z-index: 999;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+    width: 98%;
+    max-height: 93vh;
+    color: #6e7c8a;
+    //卷軸控制
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+      background: hsla(0, 0%, 100%, 0.12);
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
+    .text_intro_flex {
+      color: #6e7c8a;
+    }
+    hr {
+      border: 0;
+      height: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      margin: 0 0 10px 0;
+    }
+    h2 {
+      font-size: 90%;
+      color: #fff;
+    }
+    h3 {
+      font-size: 120%;
+      color: #fff;
+    }
+    h4 {
+      color: #a8bbce;
+    }
+    a {
+      color: rgb(255, 174, 0);
+    }
+    a:hover {
+      color: rgb(236, 142, 0);
+    }
+    //按鈕區塊
+    .box_btn_container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1%;
+      a.btn_link {
+        display: inline-block;
+        font-size: 80%;
+        text-align: center;
+        padding: 5px;
+        margin: 0 1%;
+        background-color: #333;
+        color: #ccc;
+        border-radius: 8px;
+        img {
+          display: inline-block;
+          width: 22%;
+          vertical-align: middle;
+          margin: 3.5% 0 0 3.5%;
+          float: left;
+        }
+      }
+      a.btn_link:hover {
+        background-color: #000;
+        color: rgb(236, 142, 0);
+        transition: all 200ms ease-in-out;
+      }
+    }
+  }
+}
+//視窗開啟
+.box_in {
+  display: block;
+  opacity: 1;
+}
+//視窗關閉
+.box_out {
+  display: none;
+  opacity: 0;
+}
+
+//================= 彈跳視窗-登入 =================
+.box_popup.member {
+  //定位區
+  .box_popup_container {
+    align-items: flex-start;
+  }
+  //區塊控制
+  .box_popup_container_main {
+    width: 340px;
+    //關閉按鈕
+    a.btn_x {
+      position: absolute;
+      display: block;
+      top: 6px;
+      right: 0;
+      left: inherit;
+      width: 2em;
+      height: 2em;
+      background-image: url(~assets/images/close.svg);
+      background-size: 100% auto;
+      background-position: center top;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+    //按鈕區塊
+    .box_btn_container {
+      a.btn_link {
+        width: 48%;
+        max-width: 140px;
+      }
+    }
+  }
+}
+
+//================= 彈跳視窗-註冊 =================
+.box_popup.register {
+  //定位區
+  .box_popup_container {
+    align-items: flex-start;
+  }
+  //區塊控制
+  .box_popup_container_main {
+    width: 340px;
+    //關閉按鈕
+    a.btn_x {
+      position: absolute;
+      display: block;
+      top: 6px;
+      right: 0;
+      width: 2em;
+      height: 2em;
+      background-image: url(~assets/images/close.svg);
+      background-size: 100% auto;
+      background-position: center top;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+    //按鈕區塊
+    .box_btn_container {
+      a.btn_link {
+        width: 48%;
+        max-width: 140px;
+      }
+    }
+  }
+}
+
+//================= 彈跳視窗-模式 =================
+.box_popup.mode {
+  //定位區
+  .box_popup_container {
+    align-items: flex-start;
+  }
+  //區塊控制
+  .box_popup_container_main {
+    min-width: 340px;
+    //按鈕區塊
+    .box_btn_container {
+      flex-wrap: wrap;
+      a.btn_link {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+//================= 彈跳視窗-帳號安全設定 =================
+.box_popup.account_settings {
+  //定位區
+  .box_popup_container {
+    align-items: flex-start;
+  }
+  //區塊控制
+  .box_popup_container_main {
+    min-width: 340px;
+    padding: 8px;
+    .btn_x {
+      z-index: 2;
+    }
+    .account_wallet_item {
+      border-radius: 5px 5px 0 0;
+      padding-bottom: 2%;
+      background: linear-gradient(
+        to bottom,
+        rgba(204, 204, 204, 1) 0%,
+        rgba(255, 255, 255, 1) 100%
+      );
+      margin-bottom: 2%;
+      h4 {
+        border-radius: 5px 5px 0 0;
+        padding-left: 25px;
+        background: #ccc;
+        color: #5a5a5a;
+        font-weight: normal;
+        position: relative;
+        &:before {
+          content: '';
+          position: absolute;
+          display: inline-block;
+          top: 13px;
+          left: 5px;
+          width: 9px;
+          height: 9px;
+          border-top: 1px solid #656565;
+          border-right: 1px solid #656565;
+          transform: rotate(45deg);
+        }
+      }
+    }
+    //按鈕區塊
+    .box_btn_container {
+      a.btn_link {
+        width: 48%;
+        max-width: 140px;
+      }
+    }
+  }
+}
+
+//================= 彈跳視窗-關於JILI =================
+.box_popup.about {
+  //定位區
+  .box_popup_container {
+    align-items: flex-start;
+  }
+  //區塊控制
+  .box_popup_container_main {
+    color: #333;
+    background-color: #e9e9e9;
+    line-height: normal;
+    .top-deco {
+      font-size: 90%;
+      opacity: 0.5;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    hr {
+      margin-bottom: 1%;
+    }
+    .text_intro_flex {
+      display: flex;
+    }
+    .text_intro_left {
+      flex: 0 45%;
+      flex-wrap: wrap;
+      .hot_game {
+        margin: 40px 0;
+        img {
+          width: 18%;
+        }
+      }
+    }
+    .text_intro_right {
+      flex: 1 55%;
+      flex-wrap: wrap;
+      img {
+        width: 100%;
+        margin-top: -40px;
+      }
+    }
+    ul,
+    ol {
+      padding-left: 22.5px;
+    }
+    ul.text_games {
+      padding-left: 3%;
+      @include flexboxSetting(flex-start);
+      font-size: 90%;
+      margin: 30px 0;
+      li {
+        list-style: none;
+        margin-right: 3%;
+        span {
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: bolder;
+          font-size: 300%;
+        }
+      }
+    }
+  }
+  @include phone-width {
+    .box_popup_container_main {
+      width: 100%;
+      font-size: 90%;
+      .text_intro_left {
+        flex: 0 55%;
+        .hot_game {
+          margin: 2% 0;
+        }
+      }
+      .text_intro_right {
+        flex: 1 40%;
+      }
+      ul.text_games {
+        margin: 2% 0;
+      }
+    }
+  }
+  @include ms-phone-width {
+    .box_popup_container_main {
+      .text_intro_flex {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .text_intro_left {
+        flex: 0 100%;
+        .hot_game {
+          margin: 20px 0;
+        }
+      }
+      .text_intro_right {
+        flex: 1 100%;
+        img {
+          width: 100%;
+          margin-top: 5%;
+        }
+      }
+    }
+  }
+}

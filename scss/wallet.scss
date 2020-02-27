@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+//================= wallet 錢包 連結 =================
+.wallet-item {
+  border-radius: 8px;
+  background-color: rgba(133, 133, 133, 0.2);
+  margin-bottom: 20px;
+  transition: 0.1s;
+  i {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+    transition: all 100ms;
+  }
+  //按鈕__icon變更
+  .btn-primary {
+    i {
+      transform: rotate(-90deg);
+    }
+  }
+  .btn-success {
+    i {
+      transform: rotate(0deg);
+    }
+  }
+  .wallet-item-explanation {
+    padding: 10px;
+  }
+  .wallet-item-link {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 8px 8px;
+    padding: 5px;
+  }
+
+  //連結列表區塊
+  .link-selector-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    outline: none;
+    img {
+      width: 30px;
+      vertical-align: middle;
+      margin-right: 5%;
+      margin-bottom: 3px;
+    }
+    &:focus,
+    &:active {
+      .link-list {
+        position: relative;
+        visibility: visible;
+        height: 140px;
+        opacity: 1;
+        transform: translateY(0px);
+      }
+      i {
+        transform: rotate(0deg);
+      }
+    }
+  }
+  .link-list {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    width: 100%;
+    transform: translateY(-10px);
+    transition: all 100ms;
+  }
+}
+
+//================= email 連結 =================
+.email-item {
+  border-radius: 8px;
+  background-color: rgba(133, 133, 133, 0.2);
+  margin-bottom: 20px;
+  transition: 0.1s;
+  img {
+    width: 22px;
+    vertical-align: middle;
+    margin-right: 5%;
+    margin-bottom: 1px;
+  }
+  i {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+    transition: all 100ms;
+  }
+  //按鈕__icon變更
+  .btn-primary {
+    i {
+      transform: rotate(-90deg);
+    }
+    &:hover {
+      i {
+        transform: rotate(0deg);
+      }
+    }
+  }
+  .btn-success {
+    i {
+      transform: rotate(0deg);
+    }
+  }
+  .email-item-explanation {
+    padding: 10px;
+  }
+  .email-item-form {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 8px 8px;
+    padding: 5px;
+    .form-item {
+      width: 90%;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      input {
+        margin-left: 1%;
+      }
+    }
+  }
+}

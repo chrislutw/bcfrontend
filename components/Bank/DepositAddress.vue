@@ -27,7 +27,8 @@
         </div>
         <div class="QRcode-list">
           <div class="QRcode-list__item" href="javascript:void(0)">
-            <img :src="qrcodeImg" />
+            <!-- <img :src="qrcodeImg" /> -->
+            <qrcode-vue :value="bankAddress" />
           </div>
         </div>
       </div>
@@ -43,10 +44,11 @@
   </div>
 </template>
 <script>
-import QRCode from 'qrcode'
+import QrcodeVue from 'qrcode.vue'
 
 export default {
   name: 'DepositAddress',
+  components: { QrcodeVue },
   props: {
     bankAddress: {
       type: String,
@@ -72,14 +74,6 @@ export default {
       return this.currency.toUpperCase()
     }
   },
-  watch: {
-    bankAddress: {
-      immediate: true,
-      handler(newVal, oldVal) {
-        this.bankAddressQrcode()
-      }
-    }
-  },
   methods: {
     copyAddress() {
       window.Clipboard.copy(this.bankAddress)
@@ -87,19 +81,6 @@ export default {
         type: 'success',
         message: '已複制到剪貼簿'
       })
-    },
-    async bankAddressQrcode() {
-      if (this.bankAddress) {
-        try {
-          const img = await QRCode.toDataURL(this.bankAddress)
-          console.log('qrcode img: ', img)
-          this.qrcodeImg = img
-          return
-        } catch (error) {
-          console.log('qrcode generate error: ', error)
-        }
-      }
-      this.qrcodeImg = ''
     }
   }
 }
